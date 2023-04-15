@@ -1,11 +1,11 @@
 public class Planet {
     private static final double Grativity = 6.67e-11;
-    double xxPos;
-    double yyPos;
-    double xxVel;
-    double yyVel;
-    double mass;
-    String imgFileName;
+    public double xxPos;
+    public double yyPos;
+    public double xxVel;
+    public double yyVel;
+    public double mass;
+    public String imgFileName;
 
     public Planet(double xP, double yP, double xV,
                   double yV, double m, String img){
@@ -26,22 +26,22 @@ public class Planet {
         this.imgFileName = p.imgFileName;
     }
 
-    double calcDistance(Planet p){
+    public double calcDistance(Planet p){
         return Math.sqrt(Math.pow((this.xxPos-p.xxPos), 2) + Math.pow((this.yyPos-p.yyPos), 2));
     }
 
-    double calcForceExertedBy(Planet p){
+    public double calcForceExertedBy(Planet p){
         double dis = this.calcDistance(p);
         return Grativity * this.mass * p.mass / (dis * dis);
     }
 
-    double calcForceExertedByX(Planet p){
+    public double calcForceExertedByX(Planet p){
         double force = this.calcForceExertedBy(p);
         double distance = this.calcDistance(p);
         return force * (p.xxPos - this.xxPos) / distance;
     }
 
-    double calcForceExertedByY(Planet p){
+    public double calcForceExertedByY(Planet p){
         double force = this.calcForceExertedBy(p);
         double distance = this.calcDistance(p);
         return force * (p.yyPos - this.yyPos) / distance;
@@ -71,7 +71,7 @@ public class Planet {
         return totalForce;
     }
 
-    void update(double deltat, double xForce, double yForce){
+    public void update(double deltat, double xForce, double yForce){
         double accelerationX = xForce / this.mass;
         double accelerationY = yForce / this.mass;
         this.xxVel += accelerationX * deltat;
@@ -80,7 +80,7 @@ public class Planet {
         this.yyPos += this.yyVel * deltat;
     }
 
-    void draw() {
+    public void draw() {
         StdDraw.picture(xxPos, yyPos, "images/" + imgFileName);
     }
 }
