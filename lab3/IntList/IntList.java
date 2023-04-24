@@ -114,7 +114,23 @@ public class IntList {
         return newlist;
     }
 
+    public static IntList reverse(IntList A) {
+        if (A == null){
+            return null;
+        }
+        IntList Arest = A.rest;
+        IntList head = null;
+        while (A != null) {
+            A.rest = head;
+            head = A;
+            A = Arest;
+            if (Arest != null){
+                Arest = Arest.rest;
+            }
+        }
 
+        return head;
+    }
 
 
 
