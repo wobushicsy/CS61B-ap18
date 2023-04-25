@@ -25,7 +25,7 @@ public class ArrayDeque<T> {
             resize(array.length * 2);
         }
         size += 1;
-        head = (head-1) % array.length;
+        head = head - 1 < 0 ? head - 1 + array.length : head - 1;
         array[head] = item;
     }
 
@@ -68,7 +68,7 @@ public class ArrayDeque<T> {
         if(size == 0) {
             return null;
         }
-        tail = (tail-1) % array.length;
+        tail = tail - 1 < 0 ? tail - 1 + array.length : tail - 1;
         size -= 1;
         return array[tail];
     }
