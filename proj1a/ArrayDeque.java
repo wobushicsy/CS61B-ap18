@@ -18,8 +18,7 @@ public class ArrayDeque<T> {
         } else if (tail == head && size == array.length) {
             System.arraycopy(array, head, tmp, 0, array.length - head);
             System.arraycopy(array, 0, tmp, array.length - head, tail);
-        }
-        else {
+        } else {
             System.arraycopy(array, head, tmp, 0, array.length - head);
             System.arraycopy(array, 0, tmp, array.length - head, tail);
         }
