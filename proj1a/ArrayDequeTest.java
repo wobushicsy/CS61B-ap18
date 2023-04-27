@@ -84,9 +84,30 @@ public class ArrayDequeTest {
 
     }
 
+    public static void hugeArrayTest() {
+        System.out.println("Running add/remove test.");
+
+        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        for (int i = 0; i < 100; i ++) {
+            ad1.addFirst(i);
+        }
+
+        System.out.println("Printing out deque: ");
+        ad1.printDeque();
+
+        ArrayDeque<Integer> ad2 = new ArrayDeque<>();
+        for (int i = 0; i < 100; i ++) {
+            ad2.addLast(i);
+        }
+
+        System.out.println("\nPrinting out deque: ");
+        ad2.printDeque();
+    }
+
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
         addIsEmptySizeTest();
         addRemoveTest();
+        hugeArrayTest();
     }
 } 

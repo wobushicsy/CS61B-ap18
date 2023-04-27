@@ -39,7 +39,7 @@ public class ArrayDeque<T> {
     }
 
     public boolean isEmpty() {
-        return size == array.length;
+        return size == 0;
     }
 
     public int size() {
