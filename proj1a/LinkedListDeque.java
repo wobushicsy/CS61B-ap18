@@ -25,7 +25,7 @@ public class LinkedListDeque<T> {
     private DLNode sentinalHead;
     private DLNode sentinalEnd;
 
-    public LinkedListDeque(){
+    public LinkedListDeque() {
         this.size = 0;
         this.sentinalHead = new DLNode(null, null);
         this.sentinalEnd = new DLNode(null, null);
