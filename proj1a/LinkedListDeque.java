@@ -95,4 +95,20 @@ public class LinkedListDeque<T> {
         }
         return pointer.value;
     }
+
+    private T get_recursive(int index, DLNode head) {
+        if (index == 0) {
+            return head.value;
+        }
+
+        return get_recursive(index - 1, head.rest);
+    }
+
+    public T getRecursive(int index) {
+        if (index > size - 1) {
+            return null;
+        }
+
+        return get_recursive(index, sentinalHead.rest);
+    }
 }
