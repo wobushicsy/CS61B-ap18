@@ -58,6 +58,9 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
+        if (size < array.length / 2) {
+            resize(array.length / 2);
+        }
         T tmp = array[head];
         head = (head + 1) % array.length;
         size -= 1;
@@ -67,6 +70,9 @@ public class ArrayDeque<T> {
     public T removeLast() {
         if (size == 0) {
             return null;
+        }
+        if (size < array.length / 2) {
+            resize(array.length / 2);
         }
         tail = tail - 1 < 0 ? tail - 1 + array.length : tail - 1;
         size -= 1;
