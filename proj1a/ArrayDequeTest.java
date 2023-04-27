@@ -1,6 +1,5 @@
 /** Performs some basic linked list tests. */
 public class ArrayDequeTest {
-
     /* Utility method for printing out empty checks. */
     public static boolean checkEmpty(boolean expected, boolean actual) {
         if (expected != actual) {
@@ -106,10 +105,26 @@ public class ArrayDequeTest {
         ad2.printDeque();
     }
 
+    public static void randomAddFirstTest() {
+        ArrayDeque<Integer> ad1 = new ArrayDeque<>();
+        for (int i = 0; i < 16; i ++) {
+            ad1.addLast(i);
+        }
+        ad1.addFirst(17);
+        ad1.removeLast();
+        ad1.removeLast();
+        ad1.removeFirst();
+        ad1.addLast(28);
+        ad1.removeFirst();
+        System.out.println("\nPrinting out deque: ");
+        ad1.printDeque();
+    }
+
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
         addIsEmptySizeTest();
         addRemoveTest();
         hugeArrayTest();
+        randomAddFirstTest();
     }
 }

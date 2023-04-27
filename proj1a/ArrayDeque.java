@@ -65,7 +65,7 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        if (size < array.length / 2) {
+        if (size < array.length / 2 && size > 8) {
             resize(array.length / 2);
         }
         T tmp = array[head];
@@ -78,7 +78,7 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        if (size < array.length / 2) {
+        if (size < array.length / 2 && size > 8) {
             resize(array.length / 2);
         }
         tail = tail - 1 < 0 ? tail - 1 + array.length : tail - 1;
