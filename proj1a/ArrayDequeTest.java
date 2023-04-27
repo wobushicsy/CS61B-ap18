@@ -107,7 +107,7 @@ public class ArrayDequeTest {
 
     public static void randomAddFirstTest() {
         ArrayDeque<Integer> ad1 = new ArrayDeque<>();
-        for (int i = 0; i < 16; i ++) {
+        for (int i = 0; i < 16; i++) {
             ad1.addLast(i);
         }
         ad1.addFirst(17);
