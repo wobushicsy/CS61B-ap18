@@ -115,6 +115,7 @@ public class ArrayDequeTest {
         ad1.removeLast();
         ad1.removeFirst();
         ad1.addLast(28);
+        ad1.addLast(28);
         ad1.removeFirst();
         System.out.println("\nPrinting out deque: ");
         ad1.printDeque();
