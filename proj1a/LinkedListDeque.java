@@ -57,14 +57,14 @@ public class LinkedListDeque<T> {
 
     public void printDeque() {
         DLNode pointer = sentinalHead.rest;
-        for (int i = 0; i < size; i ++){
+        for (int i = 0; i < size; i++) {
             System.out.print(pointer.value + " ");
             pointer = pointer.rest;
         }
     }
 
     public T removeFirst() {
-        if (size == 0){
+        if (size == 0) {
             return null;
         }
         size -= 1;
@@ -86,11 +86,11 @@ public class LinkedListDeque<T> {
     }
 
     public T get(int index) {
-        if (index > size - 1){
+        if (index > size - 1) {
             return null;
         }
         DLNode pointer = sentinalHead.rest;
-        for (int i = 0; i < index; i ++) {
+        for (int i = 0; i < index; i++) {
             pointer = pointer.rest;
         }
         return pointer.value;

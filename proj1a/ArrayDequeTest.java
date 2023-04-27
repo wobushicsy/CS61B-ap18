@@ -35,7 +35,8 @@ public class ArrayDequeTest {
      * && is the "and" operation. */
     public static void addIsEmptySizeTest() {
         System.out.println("Running add/isEmpty/Size test.");
-        System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
+        System.out.println("Make sure to uncomment the lines below " +
+                "(and delete this print statement).");
 
         ArrayDeque<String> lld1 = new ArrayDeque<>();
 
@@ -66,7 +67,8 @@ public class ArrayDequeTest {
 
         System.out.println("Running add/remove test.");
 
-        System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
+        System.out.println("Make sure to uncomment the lines " +
+                "below (and delete this print statement).");
 
         ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
         // should be empty
@@ -88,7 +90,7 @@ public class ArrayDequeTest {
         System.out.println("Running add/remove test.");
 
         ArrayDeque<Integer> ad1 = new ArrayDeque<>();
-        for (int i = 0; i < 100; i ++) {
+        for (int i = 0; i < 100; i++) {
             ad1.addFirst(i);
         }
 
@@ -96,7 +98,7 @@ public class ArrayDequeTest {
         ad1.printDeque();
 
         ArrayDeque<Integer> ad2 = new ArrayDeque<>();
-        for (int i = 0; i < 100; i ++) {
+        for (int i = 0; i < 100; i++) {
             ad2.addLast(i);
         }
 
