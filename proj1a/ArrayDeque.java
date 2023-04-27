@@ -13,15 +13,8 @@ public class ArrayDeque<T> {
 
     private void resize(int newsize) {
         T[] tmp = (T[]) new Object[newsize];
-        if (tail > head) {
-            System.arraycopy(array, head, tmp, 0, size);
-        } else if (tail == head && size == array.length) {
-            System.arraycopy(array, head, tmp, 0, array.length - head);
-            System.arraycopy(array, 0, tmp, head, head);
-        } else {
-            System.arraycopy(array, head, tmp, 0, array.length - head);
-            System.arraycopy(array, 0, tmp, array.length - head, tail);
-        }
+        System.arraycopy(array, head, tmp, 0, size - head);
+        System.arraycopy(array, 0, tmp, size - head, head);
         array = tmp;
         head = 0;
         tail = size;
@@ -65,9 +58,6 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        if (size < array.length / 2 && size > 8) {
-            resize(array.length / 2);
-        }
         T tmp = array[head];
         head = (head + 1) % array.length;
         size -= 1;
@@ -77,9 +67,6 @@ public class ArrayDeque<T> {
     public T removeLast() {
         if (size == 0) {
             return null;
-        }
-        if (size < array.length / 2 && size > 8) {
-            resize(array.length / 2);
         }
         tail = tail - 1 < 0 ? tail - 1 + array.length : tail - 1;
         size -= 1;
