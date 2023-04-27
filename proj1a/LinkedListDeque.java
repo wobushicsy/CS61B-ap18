@@ -96,12 +96,12 @@ public class LinkedListDeque<T> {
         return pointer.value;
     }
 
-    private T get_recursive(int index, DLNode head) {
+    private T getrecursive(int index, DLNode head) {
         if (index == 0) {
             return head.value;
         }
 
-        return get_recursive(index - 1, head.rest);
+        return getrecursive(index - 1, head.rest);
     }
 
     public T getRecursive(int index) {
@@ -109,6 +109,6 @@ public class LinkedListDeque<T> {
             return null;
         }
 
-        return get_recursive(index, sentinalHead.rest);
+        return getrecursive(index, sentinalHead.rest);
     }
 }
