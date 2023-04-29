@@ -11,6 +11,18 @@ public class Palindrome {
     }
 
     public boolean isPalindrom(String word) {
-        return false;
+        int size = word.length();
+        boolean ispalindrom = true;
+        char a, b;
+        for (int i = 0; i < size / 2; i++) {
+            a = word.charAt(i);
+            b = word.charAt(size - i - 1);
+            if (a != b) {
+                ispalindrom = false;
+                break;
+            }
+        }
+
+        return ispalindrom;
     }
 }
