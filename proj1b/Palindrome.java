@@ -1,5 +1,3 @@
-import sun.awt.image.ImageWatched;
-
 public class Palindrome {
     public Deque<Character> wordToDeque(String word) {
         LinkedListDeque<Character> charList = new LinkedListDeque<>();
