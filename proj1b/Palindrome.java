@@ -37,7 +37,6 @@ public class Palindrome {
             }
         }
 
-
         return ispalindrome;
     }
 }

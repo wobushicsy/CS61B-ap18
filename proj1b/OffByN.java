@@ -6,6 +6,6 @@ public class OffByN implements CharacterComparator {
 
     @Override
     public boolean equalChars(char a, char b) {
-        return Math.abs(a - b) < 5;
+        return Math.abs(a - b) <= offsetN;
     }
 }
