@@ -9,4 +9,8 @@ public class Palindrome {
 
         return charList;
     }
+
+    public boolean isPalindrom(String word) {
+        return false;
+    }
 }
