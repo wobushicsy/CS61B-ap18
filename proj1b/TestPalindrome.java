@@ -27,6 +27,7 @@ public class TestPalindrome {
     @Test
     public void testIsPalindromeOffByOne() {
         OffByOne ofo = new OffByOne();
+        assertTrue(palindrome.isPalindrome("", ofo));
         assertTrue(palindrome.isPalindrome("asdfeerb", ofo));
         assertFalse(palindrome.isPalindrome("aba", ofo));
     }
