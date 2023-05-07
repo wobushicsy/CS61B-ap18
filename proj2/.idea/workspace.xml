@@ -5,32 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00dab388-24f2-4aa1-bc2e-1b727806bc67" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javalib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/.idea/libraries/javalib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/Core/Game.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/Core/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/Core/RandomUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/SaveDemo/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/SaveDemo/Square.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/SaveDemo/World.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/TileEngine/TERenderer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/TileEngine/TETile.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/TileEngine/Tileset.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/lab5/BoringWorldDemo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/lab5/HexWorld.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/lab5/RandomWorldDemo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/lab5/project2prep.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/lab6/MemoryGame.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/byog/lab6/MemoryGameSolution.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/proj2/proj2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/byog/lab5/BoringWorldDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/byog/lab5/BoringWorldDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proj2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/proj2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/byog/lab5/HexWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/byog/lab5/HexWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/lab5/BoringWorldDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj2/byog/lab5/BoringWorldDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/proj2/byog/lab5/HexWorld.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/proj2/byog/lab5/HexWorld.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

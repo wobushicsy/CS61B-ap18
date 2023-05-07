@@ -32,6 +32,7 @@ public class BoringWorldDemo {
         }
 
         // test help to understand what Tileset does
+        // codes below indicate that world[0][0] is at left down corner of the terminal
         world[2][3] = Tileset.WALL;
         world[0][0] = Tileset.WALL;
         world[0][1] = Tileset.FLOOR;
