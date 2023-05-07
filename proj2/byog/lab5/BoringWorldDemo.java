@@ -31,6 +31,12 @@ public class BoringWorldDemo {
             }
         }
 
+        // test help to understand what Tileset does
+        world[2][3] = Tileset.WALL;
+        world[0][0] = Tileset.WALL;
+        world[0][1] = Tileset.FLOOR;
+        world[0][2] = Tileset.FLOWER;
+
         // draws the world to the screen
         ter.renderFrame(world);
     }
