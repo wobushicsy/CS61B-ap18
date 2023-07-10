@@ -1,5 +1,4 @@
-// TODO: Make sure to make this class a part of the synthesizer package
-//package <package name>;
+package synthesizer;
 
 //Make sure this class is public
 public class GuitarString {
@@ -18,8 +17,20 @@ public class GuitarString {
         //       cast the result of this divsion operation into an int. For better
         //       accuracy, use the Math.round() function before casting.
         //       Your buffer should be initially filled with zeros.
+        buffer = new ArrayRingBuffer<Double>((int) Math.round(SR / frequency));
     }
 
+    private boolean isIn(double r, double[] arr, int size) {
+        boolean flag = false;
+        for(int i = 0; i < size; i += 1) {
+            if(r == arr[i]) {
+                flag = true;
+                break;
+            }
+        }
+
+        return flag;
+    }
 
     /* Pluck the guitar string by replacing the buffer with white noise. */
     public void pluck() {
@@ -28,6 +39,17 @@ public class GuitarString {
         //       double r = Math.random() - 0.5;
         //
         //       Make sure that your random numbers are different from each other.
+        int size = buffer.fillCount();
+        double[] arr = new double[size];
+        double r;
+        for(int i = 0; i < size; i += 1) {
+            r = Math.random() - 0.5;
+            while(isIn(r, arr, size)) {
+                r = Math.random() - 0.5;
+            }
+            buffer.dequeue();
+            buffer.enqueue(r);
+        }
     }
 
     /* Advance the simulation one time step by performing one iteration of
