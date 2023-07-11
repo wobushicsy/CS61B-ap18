@@ -6,8 +6,12 @@ public abstract class AbstractBoundedQueue<T> implements BoundedQueue<T> {
     protected int capacity;         // size of the buffer
 
     @Override
-    public int capacity() { return capacity; }
+    public int capacity() {
+        return capacity;
+    }
 
     @Override
-    public int fillCount() { return fillCount; }
+    public int fillCount() {
+        return fillCount;
+    }
 }
