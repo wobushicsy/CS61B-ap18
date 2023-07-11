@@ -27,6 +27,19 @@ public class TestArrayRingBuffer {
         }
     }
 
+    @Test
+    public void IteratorTest() {
+        ArrayRingBuffer<Integer> buffer = new ArrayRingBuffer<>(5);
+        for(int i = 0; i < 5; i += 1) {
+            buffer.enqueue(i * i + 2 * i - 3);
+        }
+
+        int cnt = 0;
+        for(int i : buffer) {
+            assertEquals(i, cnt * cnt + 2 * cnt + 3);
+        }
+    }
+
     /** Calls tests for ArrayRingBuffer. */
     public static void main(String[] args) {
         jh61b.junit.textui.runClasses(TestArrayRingBuffer.class);
