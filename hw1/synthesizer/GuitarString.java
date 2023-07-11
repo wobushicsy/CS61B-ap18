@@ -18,8 +18,8 @@ public class GuitarString {
 
     private boolean isIn(double r, double[] arr, int size) {
         boolean flag = false;
-        for(int i = 0; i < size; i += 1) {
-            if(r == arr[i]) {
+        for (int i = 0; i < size; i += 1) {
+            if (r == arr[i]) {
                 flag = true;
                 break;
             }
@@ -33,9 +33,9 @@ public class GuitarString {
         int size = buffer.capacity();
         double[] arr = new double[size];
         double r;
-        for(int i = 0; i < size; i += 1) {
+        for (int i = 0; i < size; i += 1) {
             r = Math.random() - 0.5;
-            while(isIn(r, arr, size)) {
+            while (isIn(r, arr, size)) {
                 r = Math.random() - 0.5;
             }
             arr[i] = r;
