@@ -78,7 +78,7 @@ public class Percolation {
             throw new IndexOutOfBoundsException("row and col should be in range(0, N)");
         }
         int index = getIndex(row, col);
-        return grid.find(index) == 0;
+        return grid.find(index) == 0 && state[row][col];
     }
 
     public int numberOfOpenSites() {

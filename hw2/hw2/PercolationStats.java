@@ -6,8 +6,8 @@ public class PercolationStats {
     private double[] xi;
     private int N;
     private int T;
-    double mean;
-    double sigmasquare;
+    private double mean;
+    private double sigmasquare;
 
     public PercolationStats(int N, int T, PercolationFactory pf) {
         // perform T independent experiments on an N-by-N grid
@@ -73,10 +73,5 @@ public class PercolationStats {
     public double confidenceHigh() {
         // high endpoint of 95% confidence interval
         return mean + 1.96 * Math.sqrt(sigmasquare) / Math.sqrt(T);
-    }
-
-    public static void main(String[] args) {
-        PercolationFactory pf = new PercolationFactory();
-        PercolationStats ps = new PercolationStats(5, 10, pf);
     }
 }
