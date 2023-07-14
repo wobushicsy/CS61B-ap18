@@ -62,16 +62,16 @@ public class PercolationStats {
 
     public double stddev() {
         // sample standard deviation of percolation threshold
-        return sigmasquare;
+        return Math.sqrt(sigmasquare);
     }
 
     public double confidenceLow() {
         // low endpoint of 95% confidence interval
-        return mean - 1.96 * Math.sqrt(sigmasquare) / Math.sqrt(T);
+        return mean - 1.96 * stddev() / Math.sqrt(T);
     }
 
     public double confidenceHigh() {
         // high endpoint of 95% confidence interval
-        return mean + 1.96 * Math.sqrt(sigmasquare) / Math.sqrt(T);
+        return mean + 1.96 * stddev() / Math.sqrt(T);
     }
 }

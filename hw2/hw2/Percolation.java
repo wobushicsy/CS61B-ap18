@@ -11,7 +11,7 @@ public class Percolation {
     public Percolation(int N) {
         // create N-by-N grid, with all sites initially blocked
         if (N <= 0) {
-            throw new IndexOutOfBoundsException("length N should be a positive number");
+            throw new IllegalArgumentException("length N should be a positive number");
         }
         grid = new WeightedQuickUnionUF(N * N + 1);       // add two virtual nodes at top and down
         for (int i = 1; i < N + 1; i += 1) {
@@ -49,7 +49,7 @@ public class Percolation {
         }
         if (isInRange(row - 1, col) && getState(row - 1, col)) {
             // down grid
-            int downindex = getIndex(row-1, col);
+            int downindex = getIndex(row - 1, col);
             grid.union(index, downindex);
         }
         if (isInRange(row, col + 1) && getState(row, col + 1)) {
@@ -91,8 +91,8 @@ public class Percolation {
         boolean flag = false;
         int index;
         for (int i = 0; i < length; i += 1) {
-            index = getIndex(length-1, i);
-            if (state[length-1][i] && grid.find(index) == grid.find(0)) {
+            index = getIndex(length - 1, i);
+            if (state[length - 1][i] && grid.find(index) == grid.find(0)) {
                 flag = true;
                 break;
             }
