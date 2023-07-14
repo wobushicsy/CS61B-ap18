@@ -19,7 +19,7 @@ public class PercolationStats {
         Percolation pc;
         xi = new double[T];
         for (int i = 0; i < T; i += 1) {
-            xi[i] = simulation(pf, N);
+            xi[i] = simulation(pf);
         }
 
         // calculate mean
@@ -34,10 +34,10 @@ public class PercolationStats {
         for (int i = 0; i < T; i += 1) {
             sigmasquare += Math.pow(xi[i] - mean, 2);
         }
-        sigmasquare /= T-1;
+        sigmasquare /= T - 1;
     }
 
-    private double simulation(PercolationFactory pf, int N) {
+    private double simulation(PercolationFactory pf) {
         Percolation pc = pf.make(N);
         int nodecnt = 0;
         int row, col;
@@ -52,7 +52,7 @@ public class PercolationStats {
             pc.open(row, col);
         }
 
-        return (nodecnt + 0.0) / (N*N);
+        return (nodecnt + 0.0) / (N * N);
     }
 
     public double mean() {
