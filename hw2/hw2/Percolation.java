@@ -90,7 +90,7 @@ public class Percolation {
         // does the system percolate?
         boolean flag = false;
         for (int i = length * length - length + 1; i < length * length + 1; i += 1) {
-            if (grid.find(i) == 0) {
+            if (grid.find(i) == grid.find(0)) {
                 flag = true;
                 break;
             }
