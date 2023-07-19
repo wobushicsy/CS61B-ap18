@@ -53,19 +53,51 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
      */
     @Override
     public V get(K key) {
-        throw new UnsupportedOperationException();
+        int hashIndex = hash(key);
+        int numBuckets = buckets.length;
+        hashIndex = Math.floorMod(hashIndex, numBuckets);
+        ArrayMap<K, V> am = buckets[hashIndex];
+
+        return am.get(key);
+    }
+
+    private void resize(int newSize) {
+        ArrayMap<K, V>[] newArrayMap = new ArrayMap[newSize];
+        for (int i = 0; i < newSize; i += 1) {
+            newArrayMap[i] = new ArrayMap<>();
+        }
+        for (int i = 0; i < buckets.length; i += 1) {
+            ArrayMap<K, V> oldArrayMap = buckets[i];
+            for (K key : oldArrayMap.keySet()) {
+                int hashIndex = hash(key);
+                int numBuckets = newSize;
+                hashIndex = Math.floorMod(hashIndex, newSize);
+                ArrayMap<K, V> am = newArrayMap[hashIndex];
+                am.put(key, oldArrayMap.get(key));
+            }
+        }
     }
 
     /* Associates the specified value with the specified key in this map. */
     @Override
     public void put(K key, V value) {
-        throw new UnsupportedOperationException();
+        int hashIndex = hash(key);
+        int numBuckets = buckets.length;
+        hashIndex = Math.floorMod(hashIndex, numBuckets);
+        ArrayMap<K, V> am = buckets[hashIndex];
+        if (!am.containsKey(key)) {
+            size += 1;
+            if (size * 1.0 / numBuckets > MAX_LF) {
+                resize(numBuckets * 2);
+            }
+        }
+        am.put(key, value);
     }
 
     /* Returns the number of key-value mappings in this map. */
     @Override
     public int size() {
-        throw new UnsupportedOperationException();
+        return size;
     }
 
     //////////////// EVERYTHING BELOW THIS LINE IS OPTIONAL ////////////////
