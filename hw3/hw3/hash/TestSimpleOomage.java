@@ -6,7 +6,6 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 
-import java.util.Set;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class TestSimpleOomage {
 
     @Test
     public void testHashCodePerfect() {
-        /* TODO: Write a test that ensures the hashCode is perfect,
+        /*
           meaning no two SimpleOomages should EVER have the same
           hashCode UNLESS they have the same red, blue, and green values!
          */
@@ -34,7 +33,7 @@ public class TestSimpleOomage {
         SimpleOomage ooA3 = new SimpleOomage(15, 5, 10);
         SimpleOomage ooA4 = new SimpleOomage(5, 5, 20);
         SimpleOomage ooB = new SimpleOomage(125, 235, 10);
-        SimpleOomage ooA1_ = new SimpleOomage(5, 10, 15);
+        SimpleOomage ooA1s = new SimpleOomage(5, 10, 15);
 
         assertNotEquals(ooA1.hashCode(), ooA2.hashCode());
         assertNotEquals(ooA1.hashCode(), ooA3.hashCode());
@@ -47,11 +46,11 @@ public class TestSimpleOomage {
         assertNotEquals(ooA3.hashCode(),  ooB.hashCode());
         assertNotEquals(ooA4.hashCode(),  ooB.hashCode());
 
-        assertNotEquals(ooA1_.hashCode(), ooA2.hashCode());
-        assertNotEquals(ooA1_.hashCode(), ooA3.hashCode());
-        assertNotEquals(ooA1_.hashCode(), ooA4.hashCode());
-        assertNotEquals(ooA1_.hashCode(),  ooB.hashCode());
-        assertEquals(   ooA1_.hashCode(), ooA1.hashCode());
+        assertNotEquals(ooA1s.hashCode(), ooA2.hashCode());
+        assertNotEquals(ooA1s.hashCode(), ooA3.hashCode());
+        assertNotEquals(ooA1s.hashCode(), ooA4.hashCode());
+        assertNotEquals(ooA1s.hashCode(),  ooB.hashCode());
+        assertEquals(ooA1s.hashCode(), ooA1.hashCode());
     }
 
     @Test
@@ -73,8 +72,7 @@ public class TestSimpleOomage {
         hashSet.add(ooA);
         assertTrue(hashSet.contains(ooA2));
     }
-
-    /* TODO: Uncomment this test after you finish haveNiceHashCode Spread in OomageTestUtility */
+    
     @Test
     public void testRandomOomagesHashCodeSpread() {
         List<Oomage> oomages = new ArrayList<>();

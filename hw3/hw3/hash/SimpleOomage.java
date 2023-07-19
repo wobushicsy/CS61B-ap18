@@ -30,15 +30,15 @@ public class SimpleOomage implements Oomage {
         if (!USE_PERFECT_HASH) {
             return red + green + blue;
         } else {
-            int red_ = red;
-            int blue_ = blue;
-            int green_ = green;
+            int redCopy = red;
+            int blueCopy = blue;
+            int greenCopy = green;
             for (int i = 0; i < 5; i += 1) {
-                red_ = (red_ >> 4) | (red_ << 4);
-                blue_ = (blue_ >> 4) | (blue_ << 4);
-                green_ = (green_ >> 4) | (green_ << 4);
+                redCopy = (redCopy >> 4) | (redCopy << 4);
+                blueCopy = (blueCopy >> 4) | (blueCopy << 4);
+                greenCopy = (greenCopy >> 4) | (greenCopy << 4);
             }
-            return red_ * 257 * 257 + green_ * 257 + blue_;
+            return redCopy * 257 * 257 + greenCopy * 257 + blueCopy;
         }
     }
 
