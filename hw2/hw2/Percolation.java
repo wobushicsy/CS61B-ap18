@@ -11,6 +11,9 @@ public class Percolation {
 
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("variable n must be a positive number");
+        }
         length = n;
         numOfOpen = 0;
         uf = new WeightedQuickUnionUF(n * n + 2);
@@ -39,8 +42,8 @@ public class Percolation {
         int index = getIndex(row, col);
         numOfOpen += 1;
         open[row][col] = true;
-        if (isOpen(row+1, col)) {
-            int upIndex = getIndex(row+1, col);
+        if (isOpen(row + 1, col)) {
+            int upIndex = getIndex(row + 1, col);
             uf.union(index, upIndex);
             ufWithTop.union(index, upIndex);
         }
@@ -78,7 +81,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        return uf.connected(0, length * length + 1);
+        return uf.connected(0, length * length + 1) && numOfOpen > 0;
     }
 
     public static void main(String[] args) {
