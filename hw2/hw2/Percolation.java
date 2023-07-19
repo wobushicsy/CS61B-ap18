@@ -3,26 +3,27 @@ package hw2;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
-    private final WeightedQuickUnionUF grid;
-    private final int length;
-    private int opennums;
-    private final boolean[][] state;
+    private WeightedQuickUnionUF uf;
+    private WeightedQuickUnionUF ufWithTop;
+    private boolean[][] open;
+    private int length;
+    private int numOfOpen;
 
-    public Percolation(int N) {
-        // create N-by-N grid, with all sites initially blocked
-        if (N <= 0) {
-            throw new IllegalArgumentException("length N should be a positive number");
+    // creates n-by-n grid, with all sites initially blocked
+    public Percolation(int n) {
+        length = n;
+        numOfOpen = 0;
+        uf = new WeightedQuickUnionUF(n * n + 2);
+        ufWithTop = new WeightedQuickUnionUF(n * n + 1);
+        for (int i = 1; i < length + 1; i += 1) {
+            uf.union(0, i);
+            uf.union(n * n + 1, n * (n - 1) + i);
+            ufWithTop.union(0, i);
         }
-        grid = new WeightedQuickUnionUF(N * N + 1);       // add two virtual nodes at top and down
-        for (int i = 1; i < N + 1; i += 1) {
-            grid.union(0, i);
-        }
-        length = N;
-        opennums = 0;
-        state = new boolean[N][N];
+        open = new boolean[n][n];
     }
 
-    private boolean isInRange(int row, int col) {
+    private boolean isInGrid(int row, int col) {
         return row >= 0 && row < length && col >= 0 && col < length;
     }
 
@@ -30,89 +31,69 @@ public class Percolation {
         return row * length + col + 1;
     }
 
-    private boolean getState(int row, int col) {
-        return state[row][col];
-    }
-
+    // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
-        // open the site (row, col) if it is not open already
-        if (isOpen(row, col)) {
+        if (isOpen(row, col) || !isInGrid(row, col)) {
             return;
         }
-        opennums += 1;
-        state[row][col] = true;
         int index = getIndex(row, col);
-        if (isInRange(row + 1, col) && getState(row + 1, col)) {
-            // up grid
-            int upindex = getIndex(row + 1, col);
-            grid.union(index, upindex);
+        numOfOpen += 1;
+        open[row][col] = true;
+        if (isOpen(row+1, col)) {
+            int upIndex = getIndex(row+1, col);
+            uf.union(index, upIndex);
+            ufWithTop.union(index, upIndex);
         }
-        if (isInRange(row - 1, col) && getState(row - 1, col)) {
-            // down grid
-            int downindex = getIndex(row - 1, col);
-            grid.union(index, downindex);
+        if (isOpen(row - 1, col)) {
+            int downIndex = getIndex(row - 1, col);
+            uf.union(index, downIndex);
+            ufWithTop.union(index, downIndex);
         }
-        if (isInRange(row, col + 1) && getState(row, col + 1)) {
-            // right grid
-            int rightindex = getIndex(row, col + 1);
-            grid.union(index, rightindex);
+        if (isOpen(row, col - 1)) {
+            int leftIndex = getIndex(row, col - 1);
+            uf.union(index, leftIndex);
+            ufWithTop.union(index, leftIndex);
         }
-        if (isInRange(row, col - 1) && getState(row, col - 1)) {
-            // left grid
-            int leftindex = getIndex(row, col - 1);
-            grid.union(index, leftindex);
+        if (isOpen(row, col + 1)) {
+            int rightIndex = getIndex(row, col + 1);
+            uf.union(index, rightIndex);
+            ufWithTop.union(index, rightIndex);
         }
     }
 
+    // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
-        // is the site (row, col) open?
-        if (!isInRange(row, col)) {
-            throw new IndexOutOfBoundsException("row and col should be in range(0, length)");
-        }
-        return state[row][col];
+        return isInGrid(row, col) && open[row][col];
     }
 
+    // is the site (row, col) full?
     public boolean isFull(int row, int col) {
-        // is the site (row, col) full?
-        if (!isInRange(row, col)) {
-            throw new IndexOutOfBoundsException("row and col should be in range(0, N)");
-        }
-        int index = getIndex(row, col);
-        return grid.find(index) == grid.find(0) && state[row][col];
+        return isOpen(row, col) && ufWithTop.connected(getIndex(row, col), 0);
     }
 
+    // returns the number of open sites
     public int numberOfOpenSites() {
-        // number of open sites
-        return opennums;
+        return numOfOpen;
     }
 
+    // does the system percolate?
     public boolean percolates() {
-        // does the system percolate?
-        boolean flag = false;
-        int index;
-        for (int i = 0; i < length; i += 1) {
-            index = getIndex(length - 1, i);
-            if (state[length - 1][i] && grid.find(index) == grid.find(0)) {
-                flag = true;
-                break;
-            }
-        }
-        return flag;
+        return uf.connected(0, length * length + 1);
     }
 
     public static void main(String[] args) {
         // use for unit testing (not required)
         Percolation test = new Percolation(1);
-//        test.open(0, 0);
-//        test.open(0, 1);
-//        test.open(0, 3);
-//        test.open(2, 3);
-//        test.open(1, 3);
-//        test.open(2, 2);
-//        test.open(3, 2);
-//        test.open(4, 2);
-//        test.open(2, 2);
-//        test.open(4, 4);
+        test.open(0, 0);
+        test.open(0, 1);
+        test.open(0, 3);
+        test.open(2, 3);
+        test.open(1, 3);
+        test.open(2, 2);
+        test.open(3, 2);
+        test.open(4, 2);
+        test.open(2, 2);
+        test.open(4, 4);
         System.out.println(test.percolates());
     }
 }
