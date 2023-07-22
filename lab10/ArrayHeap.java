@@ -206,7 +206,9 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
         Node min = getNode(1);
         swap(1, size);
         contents[size--] = null;
-        sink(1);
+        if (size > 1) {
+            sink(1);
+        }
         return min.item();
     }
 
@@ -476,6 +478,35 @@ public class ArrayHeap<T> implements ExtrinsicPQ<T> {
 
         int i = 0;
         String[] expected = {"a", "b", "c", "c", "d", "d", "e", "g", "h", "i"};
+        while (pq.size() > 1) {
+            assertEquals(expected[i], pq.removeMin());
+            i += 1;
+        }
+    }
+
+    @Test
+    public void testOneThing() {
+        ExtrinsicPQ<String> pq = new ArrayHeap<>();
+        pq.insert("c", 1);
+        assertEquals("c", pq.removeMin());
+    }
+
+    @Test
+    public void testChangePriority() {
+        ArrayHeap<String> pq = new ArrayHeap<>();
+        pq.insert("c", 3);
+        pq.insert("i", 9);
+        pq.insert("g", 7);
+        pq.insert("a", 1);
+        pq.insert("h", 8);
+        pq.insert("e", 5);
+        pq.insert("b", 2);
+        pq.insert("d", 4);
+
+        pq.changePriority("i", 2.0);
+
+        int i = 0;
+        String[] expected = {"a", "b", "i", "c", "d", "e", "g", "h"};
         while (pq.size() > 1) {
             assertEquals(expected[i], pq.removeMin());
             i += 1;
