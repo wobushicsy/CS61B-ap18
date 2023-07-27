@@ -1,7 +1,6 @@
 package lab11.graphs;
 
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 import java.util.Queue;
 
 /**
@@ -33,7 +32,6 @@ public class MazeBreadthFirstPaths extends MazeExplorer {
 
     /** Conducts a breadth first search of the maze starting at the source. */
     private void bfs(int v) {
-        // TODO: Your code here. Don't forget to update distTo, edgeTo, and marked, as well as call announce()
         marked[v] = true;
         announce();
 
@@ -57,6 +55,12 @@ public class MazeBreadthFirstPaths extends MazeExplorer {
         if (searchQueue.isEmpty()) {
             return;
         }
+
+        /*
+            really important, if we don't apply the while loop and just call bfs(next)
+            straightly, we will end up with a very deep recursion stack and cause really
+            large amount of time and memory cost
+         */
         int next = searchQueue.remove();
         while (marked[next]) {
             next = searchQueue.remove();
