@@ -13,7 +13,6 @@ public class MazeCycles extends MazeExplorer {
     */
     private Maze maze;
     private boolean hasCycle = false;
-    private LinkedList<Integer> cycle;
     private int[] myEdgeTo;
 
 
