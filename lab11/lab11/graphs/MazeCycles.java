@@ -26,7 +26,6 @@ public class MazeCycles extends MazeExplorer {
 
     @Override
     public void solve() {
-        // TODO: Your code here!
         for (int i = 1; i <= maze.N(); i += 1) {
             if (hasCycle) {
                 break;
@@ -64,7 +63,7 @@ public class MazeCycles extends MazeExplorer {
                         edgeTo[q] = p;
                         q = p;
                         p = myEdgeTo[p];
-                    } while (q != neighbor);
+                     } while (q != neighbor);
                     announce();
                     return;
                 } else {
