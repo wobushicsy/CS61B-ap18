@@ -1,9 +1,18 @@
 package lab11.graphs;
 
+import edu.princeton.cs.algs4.In;
+
+import java.util.*;
+
 /**
  *  @author Josh Hug
  */
 public class MazeAStarPath extends MazeExplorer {
+    /* Inherits public fields:
+    public int[] distTo;
+    public int[] edgeTo;
+    public boolean[] marked;
+    */
     private int s;
     private int t;
     private boolean targetFound = false;
@@ -32,6 +41,45 @@ public class MazeAStarPath extends MazeExplorer {
     /** Performs an A star search from vertex s. */
     private void astar(int s) {
         // TODO
+        marked[s] = true;
+        announce();
+
+        if (s == t) {
+            targetFound = true;
+        }
+        if (targetFound) {
+            return;
+        }
+
+        Map<Integer, Integer> nextDisMap = new TreeMap<>();
+        for (int neighbor : maze.adj(s)) {
+            if (marked[neighbor]) {
+                continue;
+            }
+            edgeTo[neighbor] = s;
+            announce();
+            distTo[neighbor] = distTo[s] + 1;
+            int manhattanDistance = Math.abs(maze.toX(t) - maze.toX(neighbor)) +
+                                        Math.abs(maze.toY(t) - maze.toY(neighbor));
+            nextDisMap.put(neighbor, manhattanDistance + distTo[neighbor]);
+        }
+
+
+        int size = nextDisMap.size();
+        for (int i = 0; i < size; i += 1) {
+            int minNeighbor = Integer.MAX_VALUE;
+            int minDist = Integer.MAX_VALUE;
+            for (Integer key: nextDisMap.keySet()) {
+                int value = nextDisMap.get(key);
+                if (value < minDist) {
+                    minNeighbor = key;
+                    minDist = value;
+                }
+            }
+            astar(minNeighbor);
+        }
+
+
     }
 
     @Override
