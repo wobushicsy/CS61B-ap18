@@ -30,8 +30,8 @@ public class Solver {
 
             WorldState state = minPriNode.getState();
             for (WorldState neighbor: state.neighbors()) {
-                if (minPriNode.getPrevious() != null &&
-                        neighbor.equals(minPriNode.getPrevious().getState())) {
+                if (minPriNode.getPrevious() != null
+                        && neighbor.equals(minPriNode.getPrevious().getState())) {
                     continue;
                 }
                 SearchNode neighborNode = new

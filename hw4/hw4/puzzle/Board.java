@@ -2,7 +2,7 @@ package hw4.puzzle;
 
 import java.util.LinkedList;
 
-public class Board implements WorldState{
+public class Board implements WorldState {
 
     private final int length;
     private final int[][] board;
@@ -36,16 +36,16 @@ public class Board implements WorldState{
         return i >= 0 && i < length && j >= 0 && j < length;
     }
 
-    private int[][] copyBoard(int[][] board) {
+    private int[][] copyBoard(int[][] srcBoard) {
         int[][] tiles = new int[length][length];
         for (int i = 0; i < length; i += 1) {
-            System.arraycopy(board[i], 0, tiles[i], 0, length);
+            System.arraycopy(srcBoard[i], 0, tiles[i], 0, length);
         }
         return tiles;
     }
 
-    private WorldState getNeighbor(int[][] board, int pos0I, int pos0J, int exI, int exJ) {
-        int[][] tiles = copyBoard(board);
+    private WorldState getNeighbor(int[][] srcBoard, int pos0I, int pos0J, int exI, int exJ) {
+        int[][] tiles = copyBoard(srcBoard);
         int tmp = tiles[pos0I][pos0J];
         tiles[pos0I][pos0J] = tiles[exI][exJ];
         tiles[exI][exJ] = tmp;
@@ -167,7 +167,7 @@ public class Board implements WorldState{
         s.append(N + "\n");
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                s.append(String.format("%2d ", tileAt(i,j)));
+                s.append(String.format("%2d ", tileAt(i, j)));
             }
             s.append("\n");
         }
