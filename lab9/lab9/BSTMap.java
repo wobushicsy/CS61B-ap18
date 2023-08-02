@@ -119,49 +119,44 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
         return keySet;
     }
 
-    private Node delMin(Node node) {
-        if (node.left == null) {
-            return node.right;
+    /** return a new tree which removes the smallest key
+     *  and associated value in the given tree.
+     */
+    private Node removeMin(K key, Node p) {
+        if (p.left == null) {
+            return p.right;
         }
-        node.left = delMin(node.left);
-        return node;
+        p.left = removeMin(key, p.left);
+        return p;
     }
 
-    private Node getMin(Node node) {
-        while (node.left != null) {
-            node = node.left;
+    /** return the node with smallest key in the given tree. */
+    private Node min(Node p) {
+        if (p.left == null) {
+            return p;
         }
-        return node;
+        return min(p.left);
     }
 
-    private Node removeHelper(Node node, K key) {
-        if (node == null) {
-            return null;
-        }
-        int cmp = key.compareTo(node.key);
 
-        // recursive call
-        if (cmp > 0) {
-            node.right = removeHelper(node.right, key);
-        } else if (cmp < 0) {
-            node.left = removeHelper(node.left, key);
+    /** return a new tree with the given key removed.
+     *  assume that the key is in the tree.
+     */
+    private Node remove(K key, Node p) {
+        int cmp = p.key.compareTo(key);
+        if (cmp < 0) {
+            p.right = remove(key, p.right);
+        } else if (cmp > 0) {
+            p.left = remove(key, p.left);
+        } else {
+            if (p.left == null) return p.right;
+            if (p.right == null) return p.left;
+            Node t = p;
+            p = min(t.right);
+            p.right = removeMin(key, t.right);
+            p.left = t.left;
         }
-
-        // deal with cases if any child of node is null
-        if (node.left == null) {
-            return node.right;
-        }
-        if (node.right == null) {
-            return node.left;
-        }
-
-        // deal with cases if both children are not null
-        Node t = node;
-        node = getMin(node.right);
-        node.right = delMin(t.right);
-        node.left = t.left;
-
-        return node;
+        return p;
     }
 
     /** Removes KEY from the tree if present
@@ -170,14 +165,13 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      */
     @Override
     public V remove(K key) {
-        V value = get(key);
-        if (value == null) {
+        V retValue = get(key);
+        if (retValue == null) {
             return null;
         }
-        size -= 1;
-        root = removeHelper(root, key);
-
-        return value;
+        root = remove(key, root);
+        size--;
+        return retValue;
     }
 
     /** Removes the key-value entry for the specified key only if it is
@@ -186,12 +180,11 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
      **/
     @Override
     public V remove(K key, V value) {
-        throw new UnsupportedOperationException();
-//        V valueCmp = get(key);
-//        if (!value.equals(valueCmp)) {
-//            return null;
-//        }
-//        return remove(key);
+        V valueCmp = get(key);
+        if (!value.equals(valueCmp)) {
+            return null;
+        }
+        return remove(key);
     }
 
     @Override
