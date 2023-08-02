@@ -158,10 +158,10 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
         // deal with cases if both children are not null
         Node t = node;
         node = getMin(node.right);
-        node.left = t.left;
         node.right = delMin(t.right);
+        node.left = t.left;
 
-        return t;
+        return node;
     }
 
     /** Removes KEY from the tree if present
@@ -206,6 +206,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
         bstmap.put("fish", 22);
         bstmap.put("zebra", 90);
 
-
+        // remove root
+        bstmap.remove("hello");
     }
 }
