@@ -85,29 +85,29 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-//        Queue<Integer> numbers = new Queue<>();
-//        numbers.enqueue(12);
-//        numbers.enqueue(25);
-//        numbers.enqueue(5);
-//        numbers.enqueue(7);
-//        numbers.enqueue(76);
-//        numbers.enqueue(56);
-//
-//        numbers = QuickSort.quickSort(numbers);
-//
-//        for (int num: numbers) {
-//            System.out.println(num);
-//        }
+        Queue<Integer> numbers = new Queue<>();
+        numbers.enqueue(12);
+        numbers.enqueue(25);
+        numbers.enqueue(5);
+        numbers.enqueue(7);
+        numbers.enqueue(76);
+        numbers.enqueue(56);
 
-        Queue<String> students = new Queue<String>();
-        students.enqueue("Alice");
-        students.enqueue("Vanessa");
-        students.enqueue("Ethan");
+        numbers = QuickSort.quickSort(numbers);
 
-        students = MergeSort.mergeSort(students);
-        for (String student: students) {
-            System.out.println(student);
+        for (int num: numbers) {
+            System.out.println(num);
         }
+
+//        Queue<String> students = new Queue<String>();
+//        students.enqueue("Alice");
+//        students.enqueue("Vanessa");
+//        students.enqueue("Ethan");
+//
+//        students = MergeSort.mergeSort(students);
+//        for (String student: students) {
+//            System.out.println(student);
+//        }
 
     }
 }
