@@ -49,8 +49,13 @@ public class QuickSort {
             Queue<Item> unsorted, Item pivot,
             Queue<Item> less, Queue<Item> equal, Queue<Item> greater) {
         // Your code here!
-        while (!unsorted.isEmpty()) {
-            Item item = unsorted.dequeue();
+        Queue<Item> copy = new Queue<>();
+        for (Item item: unsorted) {
+            copy.enqueue(item);
+        }
+
+        while (!copy.isEmpty()) {
+            Item item = copy.dequeue();
             int cmp = item.compareTo(pivot);
             if (cmp > 0) {
                 greater.enqueue(item);
